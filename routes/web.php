@@ -31,5 +31,14 @@ Route::post('/test_form_done', 'TestController@testFormDone');
 //テスト一覧
 Route::get('/test_post' ,'TestController@testPost');
 
-//テスト情報
-Route::get('/test_post_info', 'TestController@testPostInfo');
+//画像削除テスト
+Route::get('/test_delete', 'TestController@testDelete');
+
+//画像削除テスト確認画面
+Route::get('/test_delete_check/{id}', 'TestController@testDeleteCheck');
+
+//画像削除テスト完了
+Route::delete('/test_delete_done/{id}', 'TestController@testDeleteDone');
+
+//投稿編集テスト
+Route::get('/test_edit', 'TestController@testEdit');

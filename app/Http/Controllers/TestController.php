@@ -140,4 +140,42 @@ class TestController extends Controller
 
         return view('test_post', compact('data'));
     }
+
+    //画像削除テスト
+    public function testDelete() {
+
+        $img = DB::select('SELECT * FROM test');
+
+        return view('test_delete', compact('img'));
+    }
+
+    //画像削除テスト確認
+    public function testDeleteCheck(Request $request, $id) {
+
+        $data = \App\Models\Test::find($id);
+
+        return view('test_delete_check', compact('data'));
+    }
+
+    //画像削除テスト完了(画像と合わせて投稿も削除)
+    public function testDeleteDone(Request $request, $id) {
+
+        //登録データを取得
+        $data = \App\Models\Test::find($id);
+
+        //画像情報を抜き出す
+        $img = $data['path'];
+
+        //取得した画像データから/storage/imgの箇所を取り除く
+        $filename = str_replace('/storage/img/', '', $img);
+
+        //DAm8jyvUJ9fJ1czjw3M6wUoTSIsOYtDZG9jFDijy.jpg ←画像の名前だけのパスに変更
+
+        //public/img内にある選択された画像を削除
+        Storage::delete('public/img/'.$filename);
+
+        $data->delete();
+
+        return view('test_delete_done');
+    }
 }

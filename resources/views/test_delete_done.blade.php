@@ -19,19 +19,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <h2>投稿が完了しました</h2>
+            <h2>画像削除テスト</h2>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_post">一覧へ</a>
+        <br><br><br>
+        <div class="col-md-12 col-ms-12 col-xs-12 text-center" style="width:80%">
+            <h2>画像削除完了</h2>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_delete">画像削除へ</a>
-        </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_edit">投稿修正へ</a>
+        <div class="col-md-12 col-ms-12 col-xs-12 text-center" style="width:80%">
+            <a href="/test_delete">画像削除画面に戻る</a>
         </div>
     </div>
 </div>
-
-</body>
-</html>

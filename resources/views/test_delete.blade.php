@@ -19,19 +19,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <h2>投稿が完了しました</h2>
+            <h2>画像削除テスト</h2>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_post">一覧へ</a>
+        <br><br><br>
+        <a href="test_form">登録フォームへ</a>
+        @foreach($img as $val)
+        <div class="col-md-12 col-ms-12 col-xs-12 mt-3 mb-3 text-center">
+            <img src="{{$val->path}}" class="mt-3 mb-3" width="50%">
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_delete">画像削除へ</a>
+        <div class="col-md-12 col-ms-12 col-xs-12 mt-3 mb-3 text-center">
+            <a href="/test_delete_check/{{$val->id}}" class="btn-danger btn-lg">削除画面へ</a>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_edit">投稿修正へ</a>
-        </div>
+        @endforeach
     </div>
 </div>
 
-</body>
-</html>
+<br><br><br>

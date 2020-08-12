@@ -19,19 +19,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <h2>投稿が完了しました</h2>
+            <h2>画像削除テスト</h2>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_post">一覧へ</a>
-        </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_delete">画像削除へ</a>
-        </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/test_edit">投稿修正へ</a>
+        <br><br><br>
+        <div class="col-md-12 col-ms-12 col-xs-12 mx-auto" style="width:80%">
+            <form  method="post" action="{{url('/test_delete_done', $data->id)}}" accept-charset="UTF-8" enctype="multipart/form-data">
+            {{csrf_field()}}
+            {{method_field('delete')}}
+                <div class="col-md-12 col-ms-12 col-xs-12 text-center">
+                    <h2>選択した画像を削除しますか？</h2>
+                    <img src="{{$data->path}}" width="50%">
+                    <br><br>
+                    <input type="submit" value="削除" class="btn-danger btn-lg">
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
-</body>
-</html>
