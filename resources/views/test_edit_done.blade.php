@@ -19,26 +19,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <h2>投稿一覧</h2>
+            <h2>投稿の編集が完了しました</h2>
         </div>
-        <a href="/test_form">投稿フォームへ</a>
-    </div>
-    <br><br>
-    <div class="row">
-        @foreach($data as $val)
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <p>{{$val->title}}</p>
+            <a href="/test_post">一覧へ</a>
         </div>
-        @if(!empty($val->path))
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <img src="{{asset($val->path)}}" width="30%">
+            <a href="/test_delete">画像削除へ</a>
         </div>
-        @endif
-        <br>
-        <div class="col-md-12 col-ms-12 col-xs-12 mt-3 mb-4 text-center">
-            <a href="/test_edit/{{$val->id}}" class="btn-primary btn-lg">投稿を編集</a>
+        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
+            <a href="/test_edit">投稿修正へ</a>
         </div>
-        @endforeach
     </div>
 </div>
 

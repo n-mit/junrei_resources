@@ -174,8 +174,138 @@ class TestController extends Controller
         //public/img内にある選択された画像を削除
         Storage::delete('public/img/'.$filename);
 
+        //画像削除の後、DBのデータも削除
         $data->delete();
 
         return view('test_delete_done');
+    }
+
+    //テストフォーム編集
+    public function testEdit($id, Request $request) {
+
+        $data = \App\Models\Test::find($id);
+
+        return view('test_edit', compact('data'));
+    }
+
+    //テストフォーム編集確認画面
+    public function testEditCheck($id, Request $request) {
+
+        $old_data = \App\Models\Test::find($id);
+
+        //画像データがあるか確認する
+        $img_check = $request['path'];
+
+        //postデータを画像も含めて受け取る
+        $inputs = $request->except('path');
+
+        // バリデーション
+        $rules = [
+            'title' => 'required | max:40',
+            'contents' => 'required | max:2000',
+        ];
+
+        $validation = \Validator::make($inputs, $rules);
+
+        if($validation->fails()) {
+            return redirect()->back()->withErrors($validation->errors())->withInput();
+        }
+
+        //titleとcontentsを抜き出す
+        $title = $inputs['title'];
+        $contents = $inputs['contents'];
+
+        //画像が選択されていた場合の処理
+        if(!empty($img_check)) {
+
+        //画像を抜き出す
+        $img = $request->file('path');
+
+        //画像をtempディレクトリに保存
+        $temp_path = $img->store('public/temp');
+        $read_temp_path = str_replace('public/', 'storage/', $temp_path);
+
+        //全てのpostデータを連想配列に再度収納
+        $data = array(
+            'title' => $title,
+            'temp_path' => $temp_path,
+            'read_temp_path' => '/'.$read_temp_path,
+            'contents' => $contents,
+        );
+
+        //画像を表示するためにsessionに保存
+        $request->session()->put('data', $data);
+
+        } else {
+            //画像が選択されていない場合
+            $data = array(
+                'title' => $title,
+                'contents' => $contents,
+            );
+        }
+
+        return view('test_edit_check', compact('data', 'img_check', 'old_data'));
+    }
+
+    //テストフォーム編集完了
+    public function testEditDone($id, Request $request) {
+
+        //セッションがあるかどうか確認
+        $data = $request->session()->get('data');
+
+        //セッションがある場合は画像がありの投稿なので、画像のパスをDBに保存する処理を実行
+        if(!empty($data)) {
+
+        $temp_path = $data['temp_path'];
+        $read_temp_path = $data['read_temp_path'];
+
+        $title = $data['title'];
+        $contents = $data['contents'];
+
+        //ファイル名は$temp_pathから"public/temp/"を除いたもの
+        $filename = str_replace('public/temp/', '', $temp_path);
+
+        //画像を保存するパスは"public/img/xxx.jpeg"
+        $storage_path = 'public/img/'.$filename;
+
+        //temp_path: public/temp/5n209adAa1XmDLVthgWplTQcXm8uG4UwsjrIKrMk.jpeg ←こんなパス
+        //storage_path: public/img/5n209adAa1XmDLVthgWplTQcXm8uG4UwsjrIKrMk.jpeg ←publicの後が上とは違う
+
+        //data情報をセッションから削除
+        $request->session()->forget('data');
+
+        //Storageファサードのmoveメソッドで、第一引数->第二引数へファイルを移動
+        //ここでは、tempフォルダからimgフォルダに画像を移動している
+        Storage::move($temp_path, $storage_path);
+
+        //画像を読み込むときのパスはstorage/img/xxx.jpeg"
+        $read_path = str_replace('public/', 'storage/', $storage_path);
+
+        //read_path: storage/img/5n209adAa1XmDLVthgWplTQcXm8uG4UwsjrIKrMk.jpeg ←これをDBに保存
+
+        //文字列の先頭に/を追加
+        $path_data = '/'.$read_path;
+
+        //DBに変更データを登録
+        $old_data = \App\Models\Test::find($id);
+        $old_data->title = $request->input('title');
+        $old_data->path = $path_data;
+        $old_data->contents = $request->input('contents');
+        $old_data->timestamps = false;
+        $old_data->save();
+
+        } else {
+
+            //画像がない場合は単純にタイトルと本文を登録
+            $inputs = $request->all();
+
+            $old_data = \App\Models\Test::find($id);
+            $old_data->title = $request->input('title');
+            $old_data->contents = $request->input('contents');
+            $old_data->timestamps = false;
+            $old_data->save();
+        }
+
+        return view('test_edit_done');
     }
 }

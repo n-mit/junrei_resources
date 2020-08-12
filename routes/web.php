@@ -41,4 +41,10 @@ Route::get('/test_delete_check/{id}', 'TestController@testDeleteCheck');
 Route::delete('/test_delete_done/{id}', 'TestController@testDeleteDone');
 
 //投稿編集テスト
-Route::get('/test_edit', 'TestController@testEdit');
+Route::get('/test_edit/{id}', 'TestController@testEdit');
+
+//投稿編集テスト確認
+Route::post('/test_edit_check/{id}', 'TestController@testEditCheck');
+
+//投稿編集テスト完了
+Route::post('/test_edit_done/{id}', 'TestController@testEditDone');

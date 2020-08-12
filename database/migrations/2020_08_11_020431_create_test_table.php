@@ -17,6 +17,8 @@ class CreateTestTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 40);
             $table->string('path')->nullable();
+            $table->string('path2')->nullable();
+            $table->string('path3')->nullable();
             $table->string('contents', 2000);
         });
     }
