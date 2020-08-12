@@ -10,11 +10,13 @@ use app\Models\Test;
 
 class TestController extends Controller
 {
+    //
     //テストフォーム
     public function testForm() {
         return view('test_form');
     }
 
+    //
     //テストフォーム確認画面
     public function testFormCheck(Request $request) {
 
@@ -72,6 +74,7 @@ class TestController extends Controller
         return view('test_form_check', compact('data', 'img_check'));
     }
 
+    //
     //テストフォーム完了
     public function testFormDone(Request $request) {
 
@@ -133,6 +136,7 @@ class TestController extends Controller
         return view('test_form_done');
     }
 
+    //
     //テストフォームの情報一覧
     public function testPost(Request $request) {
 
@@ -141,7 +145,8 @@ class TestController extends Controller
         return view('test_post', compact('data'));
     }
 
-    //画像削除テスト
+    //
+    //画像削除テスト画面
     public function testDelete() {
 
         $img = DB::select('SELECT * FROM test');
@@ -149,7 +154,8 @@ class TestController extends Controller
         return view('test_delete', compact('img'));
     }
 
-    //画像削除テスト確認
+    //
+    //画像削除テスト確認画面
     public function testDeleteCheck(Request $request, $id) {
 
         $data = \App\Models\Test::find($id);
@@ -157,7 +163,8 @@ class TestController extends Controller
         return view('test_delete_check', compact('data'));
     }
 
-    //画像削除テスト完了(画像と合わせて投稿も削除)
+    //
+    //画像削除テスト完了画面(画像と合わせて投稿も削除)
     public function testDeleteDone(Request $request, $id) {
 
         //登録データを取得
@@ -171,7 +178,7 @@ class TestController extends Controller
 
         //DAm8jyvUJ9fJ1czjw3M6wUoTSIsOYtDZG9jFDijy.jpg ←画像の名前だけのパスに変更
 
-        //public/img内にある選択された画像を削除
+        //public/img内にある選択された画像を削除(絶対パスにしなければならない？)
         Storage::delete('public/img/'.$filename);
 
         //画像削除の後、DBのデータも削除
@@ -180,6 +187,7 @@ class TestController extends Controller
         return view('test_delete_done');
     }
 
+    //
     //テストフォーム編集
     public function testEdit($id, Request $request) {
 
@@ -188,6 +196,7 @@ class TestController extends Controller
         return view('test_edit', compact('data'));
     }
 
+    //
     //テストフォーム編集確認画面
     public function testEditCheck($id, Request $request) {
 
@@ -247,7 +256,8 @@ class TestController extends Controller
         return view('test_edit_check', compact('data', 'img_check', 'old_data'));
     }
 
-    //テストフォーム編集完了
+    //
+    //テストフォーム編集完了画面
     public function testEditDone($id, Request $request) {
 
         //セッションがあるかどうか確認
