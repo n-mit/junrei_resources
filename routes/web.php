@@ -52,4 +52,5 @@ Route::post('/test_edit_done/{id}', 'TestController@testEditDone');
 //都道府県プルダウン
 Route::get('/test_postal', 'TestController@testPostal');
 
-
+//検索
+Route::get('/test_search', 'TestController@testSearch');
