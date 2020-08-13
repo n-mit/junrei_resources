@@ -318,4 +318,10 @@ class TestController extends Controller
 
         return view('test_edit_done');
     }
+
+    //
+    //都道府県プルダウンテスト
+    public function testPostal() {
+        return view('test_postal');
+    }
 }

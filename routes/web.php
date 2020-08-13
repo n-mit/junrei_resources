@@ -48,3 +48,8 @@ Route::post('/test_edit_check/{id}', 'TestController@testEditCheck');
 
 //投稿編集テスト完了
 Route::post('/test_edit_done/{id}', 'TestController@testEditDone');
+
+//都道府県プルダウン
+Route::get('/test_postal', 'TestController@testPostal');
+
+
