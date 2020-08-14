@@ -54,3 +54,6 @@ Route::get('/test_postal', 'TestController@testPostal');
 
 //検索
 Route::get('/test_search', 'TestController@testSearch');
+
+//いいね
+Route::get('/test_good/{id}', 'TestController@testGood');

@@ -336,4 +336,13 @@ class TestController extends Controller
 
         return view('test_search', compact('data'));
     }
+
+    //
+    //いいね
+    public function testGood($id) {
+
+        $data = \App\Models\Test::find($id);
+
+        return view('test_good', compact('data'));
+    }
 }
