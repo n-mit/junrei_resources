@@ -7,6 +7,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use app\Models\Test;
+use app\Models\Test2;
 
 class TestController extends Controller
 {
@@ -317,5 +318,22 @@ class TestController extends Controller
         }
 
         return view('test_edit_done');
+    }
+
+    //
+    //都道府県プルダウン
+    public function testPostal() {
+        return view('test_postal');
+    }
+
+    //
+    //検索
+    public function testSearch() {
+
+        $data = \App\Models\Test2::pluck('title');
+
+        //dd($data);
+
+        return view('test_search', compact('data'));
     }
 }
