@@ -55,5 +55,39 @@ Route::get('/test_postal', 'TestController@testPostal');
 //検索
 Route::get('/test_search', 'TestController@testSearch');
 
-//いいね
-Route::get('/test_good/{id}', 'TestController@testGood');
+
+//
+//ログイン関連
+//
+
+//ログイン
+Route::get("/login", "LoginController@loginini");
+
+Route::post("/login", "LoginController@login");
+
+Route::get('/access_denied', function () {
+    return view('access_denied');
+});
+
+//ログアウト
+Route::get("/logout", "LoginController@logout");
+
+//ログインテスト用(のちに消去)
+Route::get('/login_ok', "LoginController@loginOK");
+
+//
+//ユーザー関連
+//
+
+
+//ユーザー登録画面
+Route::get('user_regi', 'UserController@userRegi');
+
+//ユーザー登録確認画面
+Route::post('user_regi_check', 'UserController@userRegiCheck');
+
+//ユーザー登録完了画面
+Route::post('user_regi_done', 'UserController@userRegiDone');
+
+//マイページ
+Route::get('user_mypage/{id}', 'UserController@userMyPage');
