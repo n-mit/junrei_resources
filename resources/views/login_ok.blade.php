@@ -18,5 +18,9 @@
 
 <a href="/logout">ログアウト</a>
 
+<br><br>
+
+<a href="/user_mypage/{{$user_data}}">マイページへ</a>
+
 </body>
 </html>

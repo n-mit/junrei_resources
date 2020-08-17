@@ -21,25 +21,29 @@
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
             <h2>ログイン</h2>
         </div>
-        <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <form method="post" action="/login">
+        <div class="col-md-12 col-ms-12 col-xs-12">
+            <form method="post" action="/login" class="form-horizontal">
             {{csrf_field()}}
                 <div class="form-group">
                     <label>ユーザーID</label>
                     <input type="text" name="user" value="{{old('user')}}"
                     class="form-control @if(!empty($errors->first('user')))border-danger @endif">
                     <span class="help-block text-danger">{{$errors->first('user')}}</span>
-                    <span class="help-block text-danger">{{$userError ?? ''}}</span>
+                    @if(session('message'))
+                    <span class="help-block text-danger">{{session('message')}}</span>
+                    @endif
                 </div>
                 <div class="form-group @if(!empty($errors->first('password'))) has-error @endif">
                     <label>パスワード</label>
                     <input type="password" name="password" placeholder="password"
                     class="form-control @if(!empty($errors->first('password')))border-danger @endif">
                     <span class="help-block text-danger">{{$errors->first('password')}}</span>
-                    <span class="help-block text-danger">{{$passError ?? ''}}</span>
+                    @if(session('pass_message'))
+                    <span class="help-block text-danger">{{session('pass_message')}}</span>
+                    @endif
                 </div>
                 <br>
-                <input type="submit" value="登録内容確認へ" class="btn-lg">
+                <input type="submit" value="ログイン" class="btn-lg">
             </form>
         </div>
     </div>

@@ -157,6 +157,11 @@ return [
     'attributes' => [
         'title' => 'タイトル',
         'contents' => '本文',
+        'user' => 'ユーザーID',
+        'user_name' => 'ユーザー名',
+        'password' => 'パスワード',
+        //'password confirmation' => 'パスワード(確認用)',
+
     ],
 
 ];

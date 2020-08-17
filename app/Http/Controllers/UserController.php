@@ -50,4 +50,11 @@ class UserController extends Controller
 
         return view('user_regi_done');
     }
+
+    public function userMyPage(Request $request, $id) {
+
+        $data = \App\Models\User::find($id);
+
+        return view('user_mypage', compact('data'));
+    }
 }

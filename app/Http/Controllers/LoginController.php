@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller,Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use app\Models\user;
@@ -43,9 +43,7 @@ class LoginController extends Controller
 
         //ユーザーIDが取れなかった場合のエラー
         if($user == '') {
-            $userError = 'email が一致しません';
-            $data = ['emailerror' => $userError];
-            //失敗処理
+            $request->session()->flash('message', 'ユーザーIDが一致しません');
             return redirect()->back()->withErrors($validation->errors())->withInput();
         }
 
@@ -58,9 +56,7 @@ class LoginController extends Controller
             return redirect('/login_ok');
         } else {
             //パスワードが一致しなかった場合のエラー
-            $passError = 'password が一致しません';
-            $data=['passerror' => $passError];
-            //失敗処理
+            $request->session()->flash('pass_message', 'パスワードが間違っています');
             return redirect()->back()->withErrors($validation->errors())->withInput();
         }
     }
@@ -68,7 +64,7 @@ class LoginController extends Controller
     //ログイン確認用(のちに消去)
     public function loginOK(Request $request) {
         // 存在チェック
-        if ($request->session()->has('login')) {
+        if($request->session()->has('login')) {
         //
         } else {
         //login画面に飛ばす
@@ -76,6 +72,14 @@ class LoginController extends Controller
         return redirect('/access_denied');
         }
 
-        return view('/login_ok');
+        //$data = $request->session()->has('admin_id');
+
+        $data = Session::get('admin_id');
+
+        $user = \App\Models\User::where('admin_id', $data)->first();
+
+        $user_data = $user['user'];
+
+        return view('/login_ok', compact('user_data'));
     }
 }
