@@ -81,13 +81,28 @@ Route::get('/login_ok', "LoginController@loginOK");
 
 
 //ユーザー登録画面
-Route::get('user_regi', 'UserController@userRegi');
+Route::get('/user_regi', 'UserController@userRegi');
 
 //ユーザー登録確認画面
-Route::post('user_regi_check', 'UserController@userRegiCheck');
+Route::post('/user_regi_check', 'UserController@userRegiCheck');
 
 //ユーザー登録完了画面
-Route::post('user_regi_done', 'UserController@userRegiDone');
+Route::post('/user_regi_done', 'UserController@userRegiDone');
 
 //マイページ
-Route::get('user_mypage/{id}', 'UserController@userMyPage');
+Route::get('/user_mypage/{admin_id}', 'UserController@userMyPage');
+
+//パスワード変更
+Route::get('/pass_edit/{admin_id}', 'UserController@passEdit');
+
+//パスワード変更確認画面
+Route::post('/pass_edit_check/{admin_id}', 'UserController@passEditCheck');
+
+//パスワード変更完了画面
+Route::post('/pass_edit_done/{admin_id}', 'UserController@passEditDone');
+
+//マイページ情報編集
+Route::get('/user_edit/{admin_id}', 'UserController@userEdit');
+
+//マイページ情報編集
+Route::post('/user_edit_check/{admin_id}', 'UserController@userEditCheck');

@@ -80,6 +80,6 @@ class LoginController extends Controller
 
         $user_data = $user['user'];
 
-        return view('/login_ok', compact('user_data'));
+        return view('/login_ok', compact('user'));
     }
 }

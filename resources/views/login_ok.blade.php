@@ -20,7 +20,7 @@
 
 <br><br>
 
-<a href="/user_mypage/{{$user_data}}">マイページへ</a>
+<a href="/user_mypage/{{$user->admin_id}}">マイページへ</a>
 
 </body>
 </html>

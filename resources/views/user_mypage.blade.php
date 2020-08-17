@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>マイページ</title>
-<!-- BootstrapのCSS読み込み -->
+@extends('layout.common')
+
+@section('title', 'マイページ')
+@section('type', 'website')
+@section('description', 'ユーザーのマイページ')
+@section('pageCss')
 <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-<!-- jQuery読み込み -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<!-- BootstrapのJS読み込み -->
-<script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-<body>
+@endsection
+
+@include('layout.head')
+
+@include('layout.header')
+
+@section('content')
 
 <br><br>
 
@@ -28,16 +27,18 @@
             <div class="text-center">
                 <h3>基本情報</h3>
             </div>
+            <br><br>
             <table class="table table-bordered table-hover">
                 <tr>
                     <th>ユーザーID</th>
-                    <td>{{$data->user}}</td>
+                    <td>{{$user->user}}</td>
                 </tr>
                 <tr>
                     <th>ユーザー名</th>
-                    <td>{{$data->user_name}}</td>
+                    <td>{{$user->user_name}}</td>
                 </tr>
             </table>
+            <a href="/pass_edit/{{$user->admin_id}}">パスワード変更</a>
         </div>
         <div class="col-md-6 col-ms-12 col-xs-12 text-center">
             <h3>投稿一覧</h3>
@@ -45,5 +46,6 @@
     </div>
 </div>
 
-</body>
-</html>
+@endsection
+
+@include('layout.footer')

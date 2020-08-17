@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>じゅんれいっ！ | 新規ユーザー登録</title>
-<!-- BootstrapのCSS読み込み -->
-<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-<!-- jQuery読み込み -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<!-- BootstrapのJS読み込み -->
-<script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-<body>
+@extends('layout.common')
 
-<br><br>
+@section('title', '新規ユーザー登録')
+@section('type', 'website')
+@section('description', '新規ユーザー登録')
+@section('pageCss')
+<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+@endsection
+
+@include('layout.head')
+
+@include('layout.header')
+
+@section('content')
+
+<br><br><br>
 
 <div class="container">
     <div class="row">
@@ -46,5 +45,6 @@
     </div>
 </div>
 
-</body>
-</html>
+@endsection
+
+@include('layout.footer')

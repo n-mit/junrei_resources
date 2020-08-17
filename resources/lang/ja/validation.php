@@ -161,6 +161,8 @@ return [
         'user_name' => 'ユーザー名',
         'password' => 'パスワード',
         //'password confirmation' => 'パスワード(確認用)',
+        'now_pass' => '現在のパスワード',
+        'new_pass' => '新しいパスワード',
 
     ],
 
