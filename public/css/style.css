@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;                         /* パディングとボーダーを幅と高さに含める */
+}
+
+/*------------------------------------------
+  ヘッダー
+------------------------------------------*/
+#header {
+  text-align: center;
+  background-color: #eee;
+  width: 100%;
+  padding: 30px 2% 10px;
+  position: fixed;                                /* ヘッダー位置の固定 */
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;                                     /* position:fixedによる要素の重なり順の指定 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);    /* ボックスに影をつける */
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.menu a, h1 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu ul {
+  margin: 10px;
+  display: flex;
+}
+
+.menu li {
+  margin:  0 0 0 15px;
+  font-size: 14px;
+}
+
+.menu {
+  margin: 0 0 0 auto;
+}
+
+.search-box {
+  padding-right: 0%;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 11px;
+}
+input:-moz-placeholder {
+  font-size: 11px;
+}
+input::-moz-placeholder {
+  font-size: 11px;
+}
+input:-ms-input-placeholder {
+  font-size: 11px;
+}
+
+/*------------------------------------------
+  フッター
+------------------------------------------*/
+#footer {
+  background-color: #eee;
+  padding: 30px;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.contents {
+  height: 1000px;    /* スクロール挙動確認 */
+}
+
+/*------------------------------------------
+  ハンバーガーメニュー
+------------------------------------------*/
+.hamburger > img {
+  width: 50%;
+}
+
+.menu-link {
+  background-color: yellow;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  z-index: 11;
+  text-align: center;
+}
+
+.link-title {
+  line-height: 3;
+}
+
+.menu-ul {
+  text-align: center;
+  line-height: 2;
+}
+
+.menu-ul > li > a {
+  text-decoration: none;
+}
+
+#close {
+  line-height: 3;
+  text-decoration: none;
+}
+
+/* クリック時のスタイル */
+.show {
+  transform: translate3d(-250px, 0, 0);
+}
+
+/* 開く・閉じるアニメーション */
+#contents, .menu-link {
+  transition: transform 0.3s;
+}
+
+/*------------------------------------------
+  横幅896px以下のデバイスでのみスタイル指定
+------------------------------------------*/
+@media screen and (max-width: 896px) {
+  #header {
+    padding: 20px 2% 10px;
+  }
+
+}
