@@ -20,6 +20,7 @@ class CreateTestTable extends Migration
             $table->string('path2')->nullable();
             $table->string('path3')->nullable();
             $table->string('contents', 2000);
+            $table->string('good', 2000)->nullable();
         });
     }
 

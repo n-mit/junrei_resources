@@ -17,7 +17,7 @@ class CreateUserTable extends Migration
             $table->increments('admin_id')->length(5);
             $table->string('user', 30);
             $table->string('user_name', 30);
-            $table->string('password', 20);
+            $table->string('password', 100);
             $table->dateTime('create_date')->nullable();
             $table->dateTime('update_date')->nullable();
         });

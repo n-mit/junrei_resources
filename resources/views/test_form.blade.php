@@ -19,6 +19,17 @@ function ShowLength(str) {
     document.getElementById("count").innerHTML = str.length;
 }
 
+//選択した画像を表示
+$(function() {
+    $('#img').change(function(e) {
+        //1枚だけ表示
+        var file = e.target.files[0];
+        //選択した画像のURL作成
+        var blobUrl = window.URL.createObjectURL(file);
+        $('#pre-img').attr('src', blobUrl).show();
+    })
+});
+
 </script>
 <body>
 
@@ -43,6 +54,7 @@ function ShowLength(str) {
                 <div class="form-group">
                     <label>投稿画像</label><br>
                     <input type="file" name="path" value="写真を選択" id="img">
+                    <img src="http://placehold.it/300x200" width="20%" style="display: none" id="pre-img">
                 </div>
                 <br>
                 <div class="form-group">
