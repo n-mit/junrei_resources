@@ -12,9 +12,14 @@
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
-        <h1>投稿完了</h1><br>
+        <h1>サブ投稿フォーム</h1><br>
+        <form action="/sub_work_form_check" method="post">
+            {{ csrf_field() }}
+            画像：<input type="file" name="file"><br>
+            コメント：<input type="text" name="text"><br>
+            <input type="submit" value="確認">
+    </form>
     </div>
-    <a href="/work_page">投稿内容詳細画面に戻る</a>
 @endsection
 
 <!-- footerテンプレート読み込み -->

@@ -12,7 +12,7 @@
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
-        <h1>投稿完了</h1><br>
+        <h1>サブ投稿完了</h1><br>
     </div>
     <a href="/work_page">投稿内容詳細画面に戻る</a>
 @endsection
