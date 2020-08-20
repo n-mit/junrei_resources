@@ -9,8 +9,8 @@
 <nav class="menu-link">
     <p class="link-title">メニュー</p>
     <ul class="menu-ul">
-        <li><a href="#">ホーム</a></li>
-        <li><a href="#">検索</a></li>
+        <li><a href="/top">ホーム</a></li>
+        <li><a href="/works">検索</a></li>
         <li><a href="#">写真を見る</a></li>
         <li><a href="#">ランキング</a></li>
         <li><a href="#">お問い合わせ</a></li>

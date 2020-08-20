@@ -11,9 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+// Topページ
+Route::get('/top', 'TopController@getTop');
+
+// 作品検索
+Route::get('/works', 'WorksController@getWorks');
+
+// Topページ検索欄
+Route::post('/search', 'WorksController@postSearch');
+Route::get('/result', 'WorksController@result');
+Route::get('/work_page', 'WorksController@getWorkPage');
+
+// 投稿フォーム
+Route::get('/work_form', 'PostsController@getWorkForm');
+
+// 投稿フォーム内容確認
+Route::post('/work_form_check', 'PostsController@postWorkCheck');
+
+// 投稿フォーム完了
+Route::post('/work_form_done', 'PostsController@postWorkDone');
+
 
 //
 //テストフォーム
