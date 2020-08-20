@@ -19,7 +19,7 @@ class LoginController extends Controller
     //ログアウト
     function logout(Request $request) {
         $request->session()->flush();
-        return redirect('/login');
+        return redirect('/top');
     }
 
     function login(Request $request) {
@@ -53,7 +53,7 @@ class LoginController extends Controller
             $request->session()->put('admin_id', $user->admin_id);
             $request->session()->put('login', true);
             //パスワード一致の処理
-            return redirect('/login_ok');
+            return view('/login_ok');
         } else {
             //パスワードが一致しなかった場合のエラー
             $request->session()->flash('pass_message', 'パスワードが間違っています');
