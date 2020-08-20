@@ -26,7 +26,7 @@ class UserController extends Controller
 
         // バリデーション
         $rules = [
-            'user' => 'required',
+            'user' => 'required|regex:/^[a-zA-Z0-9]+$/',
             'user_name' => 'required',
             'password' => 'required|confirmed|regex:/^[a-zA-Z0-9]+$/',
             'password_confirmation' => 'required|regex:/^[a-zA-Z0-9]+$/'
@@ -83,14 +83,14 @@ class UserController extends Controller
 
         // ログインチェック
         if($request->session()->has('login')) {
-            //
-            } else {
-            //login画面に飛ばす
-            $request->session()->flush();
-            return redirect('/access_denied');
-            }
+        //
+        } else {
+        //login画面に飛ばす
+        $request->session()->flush();
+        return redirect('/access_denied');
+        }
 
-            $user = \App\Models\User::find($admin_id);
+        $user = \App\Models\User::find($admin_id);
 
         return view('pass_edit', compact('user'));
     }
@@ -195,8 +195,106 @@ class UserController extends Controller
 
         $inputs = $request->all();
 
+        $rules = [
+            'user' => 'required|regex:/^[a-zA-Z0-9]+$/',
+            'user_name' => 'required',
+        ];
+
+        $validation = \Validator::make($inputs, $rules);
+
+        if($validation->fails()) {
+            return redirect()->back()->withErrors($validation->errors())->withInput();
+        }
+
         $user = \App\Models\User::find($admin_id);
 
-        return view('user_edit', $inputs, compact('user'));
+        $user_id = $user['admin_id'];
+
+        return view('user_edit_check', $inputs, compact('user_id'));
     }
+
+    /**
+     * マイページの基本情報の編集完了画面
+     */
+    public function userEditDone(Request $request, $admin_id) {
+        // ログインチェック
+        if($request->session()->has('login')) {
+        //
+        } else {
+        //login画面に飛ばす
+        $request->session()->flush();
+        return redirect('/access_denied');
+        }
+
+        $inputs = $request->all();
+
+        $data = \App\Models\User::find($admin_id);
+        $data->user = $request->input('user');
+        $data->user_name = $request->input('user_name');
+        $data->save();
+
+        $user = \App\Models\User::find($admin_id);
+
+        return view('user_edit_done', compact('user'));
+    }
+
+    /**
+     * ユーザー登録情報全削除
+    */
+    public function userDelete(Request $request, $admin_id) {
+        // ログインチェック
+        if($request->session()->has('login')) {
+            //
+        } else {
+        //login画面に飛ばす
+        $request->session()->flush();
+        return redirect('/access_denied');
+        }
+
+        $user = \App\Models\User::find($admin_id);
+
+        return view('user_delete', compact('user'));
+
+    }
+
+    /**
+     * ユーザー登録情報全削除確認画面
+     */
+    public function userDeleteCheck(Request $request, $admin_id) {
+        // ログインチェック
+        if($request->session()->has('login')) {
+            //
+        } else {
+        //login画面に飛ばす
+        $request->session()->flush();
+        return redirect('/access_denied');
+        }
+
+        $user = \App\Models\User::find($admin_id);
+
+        return view('user_delete_check', compact('user'));
+    }
+
+    /**
+     * ユーザー登録情報全削除完了画面
+     */
+    public function userDeleteDone(Request $request, $admin_id) {
+        // ログインチェック
+        if($request->session()->has('login')) {
+            //
+        } else {
+        //login画面に飛ばす
+        $request->session()->flush();
+        return redirect('/access_denied');
+        }
+
+        $user = \App\Models\User::find($admin_id);
+
+        $user->delete();
+
+        $request->session()->flash('message', 'あなたの登録情報はすべて削除済みです。');
+
+        return redirect('/top');
+    }
+
 }

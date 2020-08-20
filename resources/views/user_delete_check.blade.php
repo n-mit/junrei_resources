@@ -1,8 +1,8 @@
 @extends('layout.common')
 
-@section('title', 'マイページ')
+@section('title', 'ユーザー情報削除')
 @section('type', 'website')
-@section('description', 'ユーザーのマイページ')
+@section('description', 'ユーザー情報削除')
 @section('pageCss')
 <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 @endsection
@@ -18,16 +18,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <h2>マイページ</h2>
+            <h2>ユーザー削除</h2>
         </div>
     </div>
     <br><br>
     <div class="row">
-        <div class="col-md-6 col-ms-12 col-xs-12">
-            <div class="text-center">
-                <h3>基本情報</h3>
-            </div>
-            <br><br>
+        <div class="col-md-12 col-ms-12 col-xs-12">
+            <h3>削除するユーザー情報</h3>
+        </div>
+        <form method="post" action="{{url('/user_delete_done', $user->admin_id)}}">
+        {{csrf_field()}}
             <table class="table table-bordered table-hover">
                 <tr>
                     <th>ユーザーID</th>
@@ -38,13 +38,11 @@
                     <td>{{$user->user_name}}</td>
                 </tr>
             </table>
-            <a href="/pass_edit/{{$user->admin_id}}">パスワード変更</a><br>
-            <a href="/user_edit/{{$user->admin_id}}">基本情報変更</a><br>
-            <a href="/user_delete/{{$user->admin_id}}">ユーザー情報削除</a>
-        </div>
-        <div class="col-md-6 col-ms-12 col-xs-12 text-center">
-            <h3>投稿一覧</h3>
-        </div>
+            <br>
+            <input type="button" value="戻る" onclick="histry.back()">
+            <br><br>
+            <input type="submit" value="削除" class="btn-lg btn-danger" onclick="return confirm('本当に削除しますか？')">
+        </form>
     </div>
 </div>
 

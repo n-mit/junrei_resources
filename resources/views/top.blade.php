@@ -11,8 +11,12 @@
 @include('layout.header')
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
+    @if(session('message'))
+    <span>{{session('message')}}</span>
+    @endif
     <div>
         <p>ああああああああああああああああああああ</p>
+        <a href="/user_regi">新規ユーザー登録</a>
     </div>
 @endsection
 

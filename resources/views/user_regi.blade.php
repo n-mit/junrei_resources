@@ -26,7 +26,7 @@
                 <form method="post" action="/user_regi_check">
                 {{csrf_field()}}
                     <div class="form-group">
-                        <label>ユーザーID</label>
+                        <label>ユーザーID</label><span class="text-danger">※半角英数字で記入</span>
                         <input type="text" name="user" value="{{old('user')}}"
                         class="form-control @if(!empty($errors->first('user')))border-danger @endif">
                         <span class="help-block text-danger">{{$errors->first('user')}}</span>

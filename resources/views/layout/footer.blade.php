@@ -14,7 +14,15 @@
         <li><a href="#">写真を見る</a></li>
         <li><a href="#">ランキング</a></li>
         <li><a href="#">お問い合わせ</a></li>
-        <li><a href="#">ログイン</a></li>
+        @php
+        $data = session('admin_id');
+        @endphp
+        @if(session('login'))
+        <li><a href="/user_mypage/{{$data}}">マイページ</a></li>
+        <li><a href="/logout">ログアウト</a></li>
+        @else
+        <li><a href="/login">ログイン</a></li>
+        @endif
     </ul>
     <a href="javascript:void(0)" id="close">閉じる</a>
 </nav>

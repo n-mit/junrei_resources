@@ -1,8 +1,8 @@
 @extends('layout.common')
 
-@section('title', '新規ユーザー登録')
+@section('title', 'ログイン')
 @section('type', 'website')
-@section('description', '新規ユーザー登録')
+@section('description', 'ログイン')
 @section('pageCss')
 <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 @endsection

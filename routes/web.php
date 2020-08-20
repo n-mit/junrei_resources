@@ -73,9 +73,9 @@ Route::get('/test_postal', 'TestController@testPostal');
 Route::get('/test_search', 'TestController@testSearch');
 
 
-//
-//ログイン関連
-//
+/**
+ * ログイン関連
+ */
 
 //ログイン
 Route::get("/login", "LoginController@loginini");
@@ -92,9 +92,9 @@ Route::get("/logout", "LoginController@logout");
 //ログインテスト用(のちに消去)
 Route::get('/login_ok', "LoginController@loginOK");
 
-//
-//ユーザー関連
-//
+/**
+ * ユーザー関連
+ */
 
 
 //ユーザー登録画面
@@ -121,5 +121,17 @@ Route::post('/pass_edit_done/{admin_id}', 'UserController@passEditDone');
 //マイページ情報編集
 Route::get('/user_edit/{admin_id}', 'UserController@userEdit');
 
-//マイページ情報編集
+//マイページ情報編集確認画面
 Route::post('/user_edit_check/{admin_id}', 'UserController@userEditCheck');
+
+//マイページ情報編集完了画面
+Route::post('/user_edit_done/{admin_id}', 'UserController@userEditDone');
+
+//全ユーザー情報削除
+Route::get('/user_delete/{admin_id}', 'UserController@userDelete');
+
+//全ユーザー情報削除確認画面
+Route::get('/user_delete_check/{admin_id}', 'UserController@userDeleteCheck');
+
+//全ユーザー情報削除完了
+Route::post('/user_delete_done/{admin_id}', 'UserController@userDeleteDone');
