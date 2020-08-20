@@ -175,19 +175,15 @@ class UserController extends Controller
         return redirect('/access_denied');
         }
 
-        //$session = Session::get('admin_id');
+        $user = \App\Models\User::find($admin_id);
 
-        //$user = \App\Models\User::where('admin_id', $session)->first();
-
-        $user_data = \App\Models\User::find($user);
-
-        return view('user_edit', compact('user_data'));
+        return view('user_edit', compact('user'));
     }
 
     /**
      * マイページの基本情報編集内容確認画面
      */
-    public function userEditCheck(Request $request) {
+    public function userEditCheck(Request $request, $admin_id) {
         // ログインチェック
         if($request->session()->has('login')) {
         //
@@ -197,12 +193,10 @@ class UserController extends Controller
         return redirect('/access_denied');
         }
 
-        $session = Session::get('admin_id');
-
-        $user = \App\Models\User::where('admin_id', $session)->first();
-
         $inputs = $request->all();
 
-        return view('user_edit', $inputs);
+        $user = \App\Models\User::find($admin_id);
+
+        return view('user_edit', $inputs, compact('user'));
     }
 }

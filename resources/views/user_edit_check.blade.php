@@ -31,10 +31,6 @@
                     <label>ユーザー名</label>{{$user_name}}
                     <input type="text" name="user_name" value="{{$user_name}}" class="form-control">
                 </div>
-                <div class="form-group">{{$new_pass}}
-                    <label>新しいパスワード</label>
-                    <input type="text" name="new_pass" value="{{new_pass}}" class="form-control">
-                </div>
                 <br>
                 <input type="submit" value="編集内容を確認" class="btn-lg">
             </div>

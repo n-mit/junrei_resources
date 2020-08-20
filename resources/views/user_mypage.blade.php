@@ -38,7 +38,8 @@
                     <td>{{$user->user_name}}</td>
                 </tr>
             </table>
-            <a href="/pass_edit/{{$user->admin_id}}">パスワード変更</a>
+            <a href="/pass_edit/{{$user->admin_id}}">パスワード変更</a><br>
+            <a href="/user_edit/{{$user->admin_id}}">基本情報変更</a>
         </div>
         <div class="col-md-6 col-ms-12 col-xs-12 text-center">
             <h3>投稿一覧</h3>

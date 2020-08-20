@@ -22,24 +22,16 @@
         </div>
     </div>
     <div class="row">
-        <form method="post" action="{{url('/user_edit_check')}}" class="form-horizontal">
+        <form method="post" action="{{url('/user_edit_check', $user->admin_id)}}" class="form-horizontal">
         {{csrf_field()}}
             <div class="col-md-12 col-ms-12 col-xs-12">
                 <div class="form-group">
                     <label>ユーザーID</label>
-                    <input type="text" name="user" value="{{$user_data->user}}" class="form-control">
+                    <input type="text" name="user" value="{{$user->user}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>ユーザー名</label>
-                    <input type="text" name="user_name" value="{{$user_data->user_name}}" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>現在のパスワード</label>
-                    <input type="text" name="now_pass" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>新しいパスワード</label>
-                    <input type="text" name="new_pass" class="form-control">
+                    <input type="text" name="user_name" value="{{$user->user_name}}" class="form-control">
                 </div>
                 <br>
                 <input type="submit" value="編集内容を確認" class="btn-lg">
