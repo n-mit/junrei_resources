@@ -20,6 +20,11 @@ Route::get('/works', 'WorksController@getWorks');
 // Topページ検索欄
 Route::post('/search', 'WorksController@postSearch');
 Route::get('/result', 'WorksController@result');
+
+//作品投稿一覧ページ
+Route::get('/work_list', 'WorksController@getWorkList');
+
+//作品投稿詳細ページ
 Route::get('/work_page', 'WorksController@getWorkPage');
 
 // 投稿フォーム
@@ -31,6 +36,23 @@ Route::post('/work_form_check', 'PostsController@postWorkCheck');
 // 投稿フォーム完了
 Route::post('/work_form_done', 'PostsController@postWorkDone');
 
+// サブ投稿フォーム
+Route::get('/sub_work_form', 'Sub_PostsController@getSubWorkForm');
+
+// サブ投稿フォーム内容確認
+Route::post('/sub_work_form_check', 'Sub_PostsController@postSubWorkCheck');
+
+// サブ投稿フォーム完了
+Route::post('/sub_work_form_done', 'Sub_PostsController@postSubWorkDone');
+
+// 問い合わせフォーム
+Route::get('/contact_form', 'ContactsController@getContactForm');
+
+// 問い合わせ内容確認
+Route::post('/contact_form_check', 'ContactsController@postContactCheck');
+
+// 問い合わせ完了
+Route::post('/contact_form_done', 'ContactsController@postContactDone');
 
 //
 //テストフォーム

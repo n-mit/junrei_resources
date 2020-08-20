@@ -13,7 +13,7 @@
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
         <h1>作品名一覧</h1><br>
-        <a href="/work_page">作品名</a>
+        <a href="/work_list">作品名</a>
     </div>
 
     <div>投稿したい作品名が無かったら<a href="/work_form">こちら</a>から</div>
