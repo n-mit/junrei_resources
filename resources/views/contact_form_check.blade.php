@@ -12,9 +12,16 @@
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
-        <h1>投稿完了</h1><br>
+        <h1>お問い合わせ内容確認</h1><br>
+        <form action="/contact_form_done" method="post">
+            {{ csrf_field() }}
+            お名前：{{ $contact_data['contact_name'] }}<br>
+            メールアドレス：{{ $contact_data['contact_address'] }}<br>
+            お問い合わせ内容：{{ $contact_data['contact_post'] }}<br>
+            <input type="submit" value="投稿する">
+            <input type="button" onclick="history.back()" value="戻る">
+    </form>
     </div>
-    <a href="/work_page">投稿内容詳細画面に戻る</a>
 @endsection
 
 <!-- footerテンプレート読み込み -->

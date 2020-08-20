@@ -12,10 +12,17 @@
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
-        <h1>作品ページ</h1>
+        <div><a href="/work_form">作品へ投稿する</a></div>
+        <h1>作品投稿詳細ページ</h1>
+        <p>投稿詳細内容が表示
+            表示内容：画像・タイトル・作品名・住所・コメント
+        </p>
     </div><br>
 
-    <div><a href="/work_form">投稿する</a></div>
+    <div>
+        <p>詳細内容についてのコメントや画像の投稿を一覧表示</p>
+        <div><a href="/sub_work_form">詳細内容についてのコメント画像投稿</a></div>
+    </div>
 @endsection
 
 <!-- footerテンプレート読み込み -->

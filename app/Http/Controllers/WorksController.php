@@ -17,6 +17,11 @@ class WorksController extends Controller
         return view('result', compact('text'));
     }
 
+    // 作品投稿一覧ページ
+    public function getWorkList(){
+        return view('work_list');
+    }
+
     // 作品ページを表示
     public function getWorkPage(){
         return view('work_page');

@@ -12,9 +12,15 @@
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
-        <h1>投稿完了</h1><br>
+        <h1>お問い合わせフォーム</h1><br>
+        <form action="/contact_form_check" method="post">
+            {{ csrf_field() }}
+            お名前：<input type="text" name="contact_name"><br>
+            メールアドレス：<input type="mail" name="contact_address"><br>
+            お問い合わせ内容：<textarea name="contact_post"></textarea><br>
+            <input type="submit" value="確認">
+    </form>
     </div>
-    <a href="/work_page">投稿内容詳細画面に戻る</a>
 @endsection
 
 <!-- footerテンプレート読み込み -->
