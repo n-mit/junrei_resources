@@ -12,8 +12,8 @@
         <li><a href="/top">ホーム</a></li>
         <li><a href="/works">検索</a></li>
         <li><a href="#">ランキング</a></li>
-        <li><a href="#">お問い合わせ</a></li>
-        <li><a href="#">ログイン</a></li>
+        <li><a href="/contact_form">お問い合わせ</a></li>
+        <li><a href="/login">ログイン</a></li>
     </ul>
     <a href="javascript:void(0)" id="close">閉じる</a>
 </nav>

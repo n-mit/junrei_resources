@@ -13,10 +13,12 @@
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
     <div>
         <h1>作品名一覧</h1><br>
-        <a href="/work_list">作品名</a>
-    </div>
+            @foreach ($inputs as $input)
+            <td><a href="/work_list/{{$input->work_id}}">{{$input->work_name}}</a></td><br>
+            @endforeach
+    </div><br>
 
-    <div>投稿したい作品名が無かったら<a href="/work_form">こちら</a>から</div>
+    <div>聖地の写真を<a href="/work_form">投稿する</a></div>
 @endsection
 
 <!-- footerテンプレート読み込み -->

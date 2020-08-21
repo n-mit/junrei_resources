@@ -7,7 +7,7 @@
                 <li><a href="/works">検索</a></li>
                 <li><a href="#">ランキング</a></li>
                 <li><a href="/contact_form">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li><a href="/login">ログイン</a></li>
             </ul>
         </nav>
         <form action="/search" method="post" class="search-box">

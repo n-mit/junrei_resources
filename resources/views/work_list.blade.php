@@ -16,10 +16,14 @@
         <p>各投稿の一覧が表示
             表示内容：画像・タイトル・作品名・住所
         </p>
+        @foreach ($inputs as $list)
+            {{$list->work_id}}
+        @endforeach
     </div><br>
 
     <div><a href="/work_page">作品投稿詳細ページ</a></div>
     <div><a href="/work_form">投稿する</a></div>
+    <div><a href="/works">前ページへ戻る</a></div>
 @endsection
 
 <!-- footerテンプレート読み込み -->
