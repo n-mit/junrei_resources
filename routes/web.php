@@ -22,7 +22,7 @@ Route::post('/search', 'WorksController@postSearch');
 Route::get('/result', 'WorksController@result');
 
 //作品投稿一覧ページ
-Route::get('/work_list', 'WorksController@getWorkList');
+Route::get('/work_list/{id}', 'WorksController@getWorkList');
 
 //作品投稿詳細ページ
 Route::get('/work_page', 'WorksController@getWorkPage');
