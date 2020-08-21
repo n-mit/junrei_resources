@@ -20,22 +20,20 @@
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
             <h2>基本情報編集内容の確認</h2>
         </div>
-        <form method="post" action="{{url('/user_edit_done')}}" class="form-horizontal">
+        <form method="post" action="{{url('/user_edit_done', $user_id)}}" class="form-horizontal">
         {{csrf_field()}}
             <div class="col-md-12 col-ms-12 col-xs-12">
                 <div class="form-group">
-                    <label>ユーザーID</label>{{$user}}
-                    <input type="text" name="user" value="{{$user}}" class="form-control">
+                    <label>ユーザーID：</label>{{$user}}
+                    <input type="hidden" name="user" value="{{$user}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ユーザー名</label>{{$user_name}}
-                    <input type="text" name="user_name" value="{{$user_name}}" class="form-control">
-                </div>
-                <div class="form-group">{{$new_pass}}
-                    <label>新しいパスワード</label>
-                    <input type="text" name="new_pass" value="{{new_pass}}" class="form-control">
+                    <label>ユーザー名：</label>{{$user_name}}
+                    <input type="hidden" name="user_name" value="{{$user_name}}" class="form-control">
                 </div>
                 <br>
+                <input type="button" value="戻る" onclick="history.back()" class="btn-lg">
+                <br><br>
                 <input type="submit" value="編集内容を確認" class="btn-lg">
             </div>
         </form>
