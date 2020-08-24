@@ -11,12 +11,16 @@
 @include('layout.header')
 
 @section('content')<!-- 以下にコンテンツ内容を追加 -->
-    @if(session('message'))
+    @if(session('delete_message'))
+    {{--ユーザー削除メッセージ--}}
     <span>{{session('message')}}</span>
+    @endif
+    @if(session('logout_message'))
+    {{--ログアウトメッセージ--}}
+    <span>{{session('logout_message')}}</span>
     @endif
     <div>
         <p>ああああああああああああああああああああ</p>
-        <a href="/user_regi">新規ユーザー登録</a>
     </div>
 @endsection
 

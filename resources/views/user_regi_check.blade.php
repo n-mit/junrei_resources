@@ -35,15 +35,38 @@
                 </div>
                 <br>
                 <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-                    <label>パスワード</label>：{{$password}}
-                    <input type="hidden" name="password" value="{{$password}}">
+                    <label>パスワード</label>
+                    <input type="password" name="password" value="{{$password}}" id="password" readOnly>
+                    <br>
+                    <label><input type="checkbox" id="pass-check">パスワードを確認する</label>
                 </div>
                 <br>
-                <input type="submit" value="登録" style="width:60%" class="btn-lg">
+                <div class="col-md-12 col-ms-12 col-xs-12 text-center">
+                    <input type="button" value="戻る" onclick="hitstory.back()" class="btn-lg">
+                    <br><br>
+                    <input type="submit" value="登録" style="width:60%" class="btn-lg">
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+//パスワード確認
+const pwdCheck = document.getElementById('pass-check');
+pwdCheck.addEventListener('change', function() {
+    const pwd = document.getElementById('password');
+    if(pwdCheck.checked) {
+        pwd.setAttribute('type', 'text');
+    } else {
+        pwd.setAttribute('type', 'password');
+    }
+}, false);
+</script>
+
+@endsection
+
+@section('layout.pageJs')
 
 @endsection
 
