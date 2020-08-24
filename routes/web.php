@@ -99,20 +99,19 @@ Route::get('/test_search', 'TestController@testSearch');
  * ログイン関連
  */
 
-//ログイン
+//ログイン画面
 Route::get("/login", "LoginController@loginini");
 
+//ログインの確認処理
 Route::post("/login", "LoginController@login");
 
+//ログインしていない状態でログイン必須のページにいった場合
 Route::get('/access_denied', function () {
     return view('access_denied');
 });
 
 //ログアウト
 Route::get("/logout", "LoginController@logout");
-
-//ログインテスト用(のちに消去)
-Route::get('/login_ok', "LoginController@loginOK");
 
 /**
  * ユーザー関連

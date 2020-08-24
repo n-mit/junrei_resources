@@ -19,6 +19,7 @@ class LoginController extends Controller
     //ログアウト
     function logout(Request $request) {
         $request->session()->flush();
+        $request->session()->flash('logout_message', 'ログアウトしました');
         return redirect('/top');
     }
 
@@ -53,33 +54,11 @@ class LoginController extends Controller
             $request->session()->put('admin_id', $user->admin_id);
             $request->session()->put('login', true);
             //パスワード一致の処理
-            return view('/login_ok');
+            return view('/top');
         } else {
             //パスワードが一致しなかった場合のエラー
             $request->session()->flash('pass_message', 'パスワードが間違っています');
             return redirect()->back()->withErrors($validation->errors())->withInput();
         }
-    }
-
-    //ログイン確認用(のちに消去)
-    public function loginOK(Request $request) {
-        // 存在チェック
-        if($request->session()->has('login')) {
-        //
-        } else {
-        //login画面に飛ばす
-        $request->session()->flush();
-        return redirect('/access_denied');
-        }
-
-        //$data = $request->session()->has('admin_id');
-
-        $data = Session::get('admin_id');
-
-        $user = \App\Models\User::where('admin_id', $data)->first();
-
-        $user_data = $user['user'];
-
-        return view('/login_ok', compact('user'));
     }
 }

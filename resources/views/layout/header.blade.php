@@ -14,6 +14,7 @@
                 <li><a href="/user_mypage/{{$data}}">マイページ</a></li>
                 <li><a href="/logout">ログアウト</a></li>
                 @else
+                <li><a href="/user_regi">ユーザー登録</a></li>
                 <li><a href="/login">ログイン</a></li>
                 @endif
             </ul>

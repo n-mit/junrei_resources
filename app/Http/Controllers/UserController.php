@@ -292,7 +292,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        $request->session()->flash('message', 'あなたの登録情報はすべて削除済みです。');
+        $request->session()->flash('delete_message', 'あなたの登録情報はすべて削除済みです。');
 
         return redirect('/top');
     }

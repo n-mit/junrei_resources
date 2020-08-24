@@ -21,7 +21,8 @@
             <h2>新規ユーザー登録完了</h2>
         </div>
         <div class="col-md-12 col-ms-12 col-xs-12 text-center">
-            <a href="/top">トップに戻る</a>
+            <a href="/top">トップに戻る</a><br>
+            <a href="/login">ログイン画面へ</a>
         </div>
     </div>
 </div>
